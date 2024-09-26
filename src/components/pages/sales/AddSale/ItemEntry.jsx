@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const ItemsEntry = ({ onItemsChange }) => {
     const [items, setItems] = useState([]);
@@ -44,12 +44,25 @@ const ItemsEntry = ({ onItemsChange }) => {
     };
 
     return (
-        <div >
-            <h2>Items Entry</h2>
+        <div className="mt-5">
+            <h2 className="text-xl font-semibold mb-4">Items Entry</h2>
+            
+            {/* Column Headings */}
+            <div className="grid grid-cols-7 gap-3 font-semibold bg-gray-100 p-2 rounded">
+                <div>Item Name</div>
+                <div>Quantity</div>
+                <div>Unit Price ($)</div>
+                <div>Discount (%)</div>
+                <div>Tax (%)</div>
+                <div>Total Before Tax ($)</div>
+                <div>Total After Tax ($)</div>
+            </div>
+
             {items.map((item, index) => (
-                <div key={index} className='space-x-3'>
+                <div key={index} className="grid grid-cols-7 gap-3 mt-2 p-2 bg-white rounded shadow-sm">
                     <input
                         placeholder="Item Name"
+                        value={item.itemName}
                         onChange={e => handleItemChange(index, 'itemName', e.target.value)}
                         className='border border-gray-200 px-2 py-1 rounded'
                     />
@@ -83,13 +96,20 @@ const ItemsEntry = ({ onItemsChange }) => {
                     />
                     
                     {/* Display Calculated Totals */}
-                    <div className='border border-gray-200 px-2 py-1 rounded'>
-                        <p>Total Before Tax: ${item.totalBeforeTax}</p>
-                        <p>Total After Tax: ${item.totalAfterTax}</p>
+                    <div className='border border-gray-200 px-2 py-1 rounded flex items-center justify-center'>
+                        {item.totalBeforeTax}
+                    </div>
+                    <div className='border border-gray-200 px-2 py-1 rounded flex items-center justify-center'>
+                        {item.totalAfterTax}
                     </div>
                 </div>
             ))}
-            <button onClick={addItem} className='mt-3 bg-blue-500 text-white px-3 py-2 rounded'>Add Item</button>
+
+            <button 
+                onClick={addItem} 
+                className='mt-5 bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-600 transition'>
+                Add Item
+            </button>
         </div>
     );
 };

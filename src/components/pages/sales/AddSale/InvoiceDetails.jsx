@@ -39,7 +39,7 @@ const InvoiceDetails = ({ onDetailsChange }) => {
         <option value="State 2"  className="border border-gray-300 rounded py-1 px-3">Tamil Nadu</option>
         {/* Add more states as needed */}
       </select>
-      {/* <button onClick={handleChange}>Save Details</button> */}
+      <button onClick={handleChange}>Save Details</button>
      </div>
     </div>
   );
