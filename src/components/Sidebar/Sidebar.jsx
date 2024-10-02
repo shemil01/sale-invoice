@@ -4,8 +4,10 @@ import { BiSolidHome } from "react-icons/bi";
 import { FiUsers } from "react-icons/fi";
 import { RiAlignItemVerticalCenterFill } from "react-icons/ri";
 import { FaSalesforce } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+  const navigate = useNavigate()
   return (
     <div className="w-64 h-screen bg-black">
       <header>
@@ -16,34 +18,34 @@ const Sidebar = () => {
         </div>
         <div className="text-white">
         <ul>
-        <li>
+        <li onClick={()=>navigate('/')}>
           <p
-            to={"/admin/all-users"}
+           
             className="flex items-center py-2 px-4 rounded-md hover:bg-[#b3b3b3]"
           >
             <BiSolidHome  className="mr-2" />
-            <span>Users</span>
+            <span>Home</span>
           </p>
         </li>
         <li>
-          <p to={'/admin/all-songs'} className="flex items-center py-2 px-4 rounded-md hover:bg-[#b3b3b3]">
+          <p className="flex items-center py-2 px-4 rounded-md hover:bg-[#b3b3b3]">
             {" "}
             <FiUsers  className="mr-2"/>
-            <span>Songs</span>
+            <span>Users</span>
           </p>
         </li>
         <li>
           <p className="flex items-center py-2 px-4 rounded-md hover:bg-[#b3b3b3]">
             {" "}
             <   RiAlignItemVerticalCenterFill  className="mr-2" />
-            <span>Playlists</span>
+            <span>Ivoice</span>
           </p>
         </li>
-        <li>
+        <li onClick={()=>navigate('/add-sale')}>
           <p className="flex items-center py-2 px-4 rounded-md hover:bg-[#b3b3b3]">
             {" "}
             <FaSalesforce className="mr-2" />
-            <span>Analytics</span>
+            <span>Add Sale</span>
           </p>
         </li>
       </ul>
